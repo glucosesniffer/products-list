@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { products } from "@/app/data/route";
+import { products } from "@/app/data/products";
 
 export async function DELETE(
   _: Request,

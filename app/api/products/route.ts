@@ -1,4 +1,4 @@
-import { products } from "@/app/data/route";
+import { products } from "@/app/data/products";
 
 export async function GET(request: Request) {
   return new Response(JSON.stringify(products), {
