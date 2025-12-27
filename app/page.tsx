@@ -27,7 +27,11 @@ export default function Home() {
     const res = await fetch("/api/products", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: newName, price: Number(newPrice) }),
+      body: JSON.stringify({
+        id: newId,
+        name: newName,
+        price: Number(newPrice),
+      }),
     });
     const data = await res.json();
     setProducts([...products, data]);
