@@ -6,7 +6,7 @@ export async function DELETE(
   { params }: { params: { id: string } | Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const index = products.findIndex((p) => p.id === Number(id));
+  const index = products.findIndex((p) => Number(p.id) === Number(id));
   if (index === -1)
     return NextResponse.json({ error: "Not found" }, { status: 404 });
 
