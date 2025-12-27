@@ -41,6 +41,11 @@ export default function Home() {
     setId(0);
   }
 
+  async function handleDelete(id: number) {
+    await fetch(`/api/products/${id}`, { method: "DELETE" });
+    setProducts(products.filter((p) => p.id !== id));
+  }
+
   return (
     <div
       style={{
@@ -64,7 +69,7 @@ export default function Home() {
             type="number"
             placeholder="id"
             value={newId}
-            onChange={(e) => setId(e.target.value)}
+            onChange={(e) => setId(Number(e.target.value))}
             required
             style={{ marginRight: "0.5rem" }}
           />
@@ -92,6 +97,12 @@ export default function Home() {
         {products.map((p) => (
           <li key={p.id}>
             {p.name} - {p.price}$
+            <button
+              onClick={() => handleDelete(p.id)}
+              style={{ marginLeft: "1rem" }}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
